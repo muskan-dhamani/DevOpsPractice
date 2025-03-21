@@ -1,0 +1,42 @@
+---
+- name: Deploy Web App to EC2 Instance
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Update apt and install Nginx
+      apt:
+        update_cache: yes
+        name: nginx
+        state: present
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Create web directory on the server
+      file:
+        path: /var/www/html
+        state: directory
+        mode: '0755'
+
+    - name: Copy index.html to web directory
+      copy:
+        src: ~/DevOpsPractice/Ansible/MyWebApp/index.html
+        dest: /var/www/html/index.html
+        mode: '0644'
+
+    - name: Copy styles.css to web directory
+      copy:
+        src: ~/DevOpsPractice/Ansible/MyWebApp/styles.css
+        dest: /var/www/html/styles.css
+        mode: '0644'
+
+    - name: Copy script.js to web directory
+      copy:
+        src: ~/DevOpsPractice/Ansible/MyWebApp/script.js
+        dest: /var/www/html/script.js
+        mode: '0644'
+
