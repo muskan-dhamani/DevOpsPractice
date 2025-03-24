@@ -12,7 +12,6 @@ pipeline {
                 sh 'java HelloWorld'
             }
         }
-    }
 
     post {
         success {
