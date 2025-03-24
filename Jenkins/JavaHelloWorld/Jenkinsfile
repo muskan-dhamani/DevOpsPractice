@@ -1,14 +1,6 @@
 pipeline {
     agent any
-
-    stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/muskan-dhamani/DevOpsPractice.git'
-            }
-        }
-        
-        
+    
         stage('Build') {
             steps {
                 sh 'javac HelloWorld.java'
