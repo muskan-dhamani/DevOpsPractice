@@ -1,5 +1,4 @@
-# app.py
-# This is a test commit
+# Test commit to trigger action
 def add(a, b):
     return a + b
 
