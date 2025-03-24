@@ -1,17 +1,34 @@
 pipeline {
     agent any
-    
+
+    stages {
+        stage('Create Java File') {
+            steps {
+                // Create the HelloWorld.java file dynamically
+                writeFile file: 'HelloWorld.java', text: '''
+                    public class HelloWorld {
+                        public static void main(String[] args) {
+                            System.out.println("Hello, World!");
+                        }
+                    }
+                '''
+            }
+        }
+
         stage('Build') {
             steps {
+                // Compile the Java code
                 sh 'javac HelloWorld.java'
             }
         }
-        
+
         stage('Run') {
             steps {
+                // Run the compiled Java code
                 sh 'java HelloWorld'
             }
         }
+    }
 
     post {
         success {
@@ -22,4 +39,3 @@ pipeline {
         }
     }
 }
-
