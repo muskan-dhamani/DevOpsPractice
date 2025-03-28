@@ -12,3 +12,16 @@ Docker Volume:
 2. docker volume create name
 3. docker volume rm name/id
 4. docker volume inspect name/id
+
+Docker Networking:
+Connect one container with another container - 
+1. docker run -d --name nameofcontainer image
+2. docker exec -it nameofcontainer path
+3. apt-get install iputils-ping -y
+4. Same steps for another container
+5. ping IP_Address
+
+Networking commands: 
+1. docker network create network_name
+2. docker run -d --name nameofcontainer --network=network_name image
+3. docker network rm network_name
