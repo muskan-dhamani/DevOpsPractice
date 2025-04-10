@@ -8,4 +8,3 @@ Commands:
 2. kubectl get deploy
    kubectl get rs
    kubectl get pods
-3. 
